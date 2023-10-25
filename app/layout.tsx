@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,23 +17,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* <body className={inter.className}> */}
+      <body>
         <div className="navbar bg-base-100">
-          <Link href={'/'} className="btn btn-ghost normal-case text-xl">
+          <Link href="/" className="btn btn-ghost normal-case text-xl">
             cryptoBank
           </Link>
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link href={'/sign-in'}>Sign in</Link>
+                <Link href="/login/sign-in">Sign in</Link>
               </li>
               <li>
-                <Link href={'/sign-up'}>Sign up</Link>
+                <Link href="/login/sign-up">Sign up</Link>
               </li>
               <li>
-                <Link href={'/trade'}>Trade</Link>
+                <Link href="/trade">Trade</Link>
               </li>
             </ul>
+          </div>
+          <div>
+            <Link href="/register">Register</Link>
+            <Link href="/login">Login</Link>
           </div>
         </div>
 

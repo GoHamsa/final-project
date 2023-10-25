@@ -95,8 +95,7 @@ export default async function Trade() {
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            {/* row 1 */}
+          {/* <tbody>
             {cryptos.map((crypto) => (
               <tr>
                 <td>
@@ -111,7 +110,7 @@ export default async function Trade() {
                 <td>{crypto.name}</td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
         </table>
       </div>
     </div>
