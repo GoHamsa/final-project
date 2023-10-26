@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import getCryptoImage from '../../util/getCryptoImage';
 
 type CoinMarketCapCrypto = {
   id: number;
@@ -31,6 +30,13 @@ async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
 export default async function Trade() {
   const cryptos = await getCryptos();
   console.log(cryptos);
+
+  function getCryptoImage(
+    id: number,
+    size: '32x32' | '64x64' | '128x128',
+  ): string {
+    return `https://s2.coinmarketcap.com/static/img/coins/${size}/${id}.png`;
+  }
 
   // Vorbereitung d Coin API
   // 17bf42f7-860f-4465-839d-e807390b31bc
@@ -65,12 +71,7 @@ export default async function Trade() {
                   />
                 </td>
                 <td>
-                  <Link
-                    className="link link-hover"
-                    href={`/trade/${crypto.id}`}
-                  >
-                    {crypto.name}
-                  </Link>
+                  <Link href={`/trade/${crypto.id}`}>{crypto.name}</Link>
                 </td>
                 <td>{crypto.quote.USD.price.toFixed(2)}</td>
               </tr>

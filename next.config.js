@@ -8,7 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'placehold.it',
+        hostname: 's2.coinmarketcap.com',
       },
     ],
   },
