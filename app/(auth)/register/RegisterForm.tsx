@@ -10,9 +10,8 @@ export default function RegisterForm() {
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
-  async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
+  async function handleRegister(event: React.FocusEvent<HTMLFormElement>) {
     event.preventDefault();
-
     const response = await fetch('/api/register', {
       method: 'POST',
       body: JSON.stringify({
@@ -27,9 +26,10 @@ export default function RegisterForm() {
       setErrors(data.errors);
       return;
     }
-
-    router.push(`/profile/${data.user.username}`);
+    router.push('/');
   }
+
+  //  console.log('Check: ', data);
 
   return (
     <form onSubmit={async (event) => await handleRegister(event)}>
@@ -45,12 +45,6 @@ export default function RegisterForm() {
         />
       </label>
       <button>Register</button>
-
-      {errors.map((error) => (
-        <div className="error" key={`error-${error.message}`}>
-          Error: {error.message}
-        </div>
-      ))}
     </form>
   );
 }
