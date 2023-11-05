@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: teal;
+}
+
+nav {
+  width: 100vw;
+  height: 4rem;
+  background: tan;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  > div a {
+    margin: 4px;
+  }
+}
+
+.error {
+  color: red;
+  background: grey;
+}
+
+.logoutButton {
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
