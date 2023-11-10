@@ -22,7 +22,7 @@ export default async function AnimalsPage() {
   //  Query your database to check if this user is admin
 
   // 3. If the sessionToken cookie is invalid or doesn't exist, redirect to login with returnTo
-  if (!session) redirect('/login?returnTo=/animals-admin');
+  if (!session) redirect('/login?returnTo=/admin');
 
   // 4. If the sessionToken cookie is valid, allow access to admin page
   // const animals = await getAnimals();
