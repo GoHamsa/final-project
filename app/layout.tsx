@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { getUserBySessionToken } from '../database/users';
@@ -36,38 +37,63 @@ export default async function RootLayout(props: Props) {
     <html lang="en">
       <body className={inter.className}>
         {/* <CookieBanner /> */}
-        <div className="navbar bg-base-100">
-          <a className="btn btn-ghost normal-case text-xl">cryEx</a>
-          <div className="btn-group">
-            <Link className="btn btn-active" href="/">
-              Home
+        <nav className="max-w-7xl mx-auto navbar bg-base-100">
+          <div className="justify-between items-center">
+            <Link href="/">
+              <img src="/favicon.ico" alt="logo" />
             </Link>
-            <Link className="btn" href="/admin">
-              Admin
+            <Link className="btn btn-ghost normal-case text-xl" href="/">
+              cryEx
             </Link>
-            <Link className="btn" href="/notes">
-              Notes
-            </Link>
-          </div>
+            <div className="btn-group flex-grow">
+              <Link className="btn btn-ghost normal-case" href="/admin">
+                Admin
+              </Link>
+              <Link className="btn btn-ghost normal-case" href="/notes">
+                Notes
+              </Link>
+              <Link className="btn btn-ghost normal-case" href="/trade">
+                Trade
+              </Link>
+              <Link href="/trade">
+                <Image
+                  src="/images/profile.png"
+                  alt="profile"
+                  width={100}
+                  height={100}
+                />
+              </Link>
+              {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
 
-          <div>
-            {user ? (
-              <>
-                <div>Welcome {user.username}!</div>
-                <LogoutButton className="btn" />
-              </>
-            ) : (
-              <>
-                <Link className="btn" href="/register">
-                  Register
-                </Link>
-                <Link className="btn" href="/login">
-                  Login
-                </Link>
-              </>
-            )}
+              <div className="flex justify-between w-full">
+                {user ? (
+                  <div className="flex items-center space-x-2">
+                    <div>Welcome {user.username}!</div>
+                    <Link href="/trade">
+                      {/* <img src="/profile.png" alt="profile" /> */}
+                      <Image
+                        src="/images/favicon.ico"
+                        alt="profile"
+                        width={50}
+                        height={50}
+                      />
+                    </Link>
+                    <LogoutButton className="btn" />
+                  </div>
+                ) : (
+                  <div className="flex items-center space-x-2">
+                    <Link className="btn" href="/login">
+                      Login
+                    </Link>
+                    <Link className="btn" href="/register">
+                      Register
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
+        </nav>
 
         {props.children}
       </body>

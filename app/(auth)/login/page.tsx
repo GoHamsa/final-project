@@ -20,7 +20,7 @@ export default async function LoginPage({ searchParams }: Props) {
   // 4. If the sessionToken cookie is invalid or doesn't exist, show the login form
 
   return (
-    <div>
+    <div className="mt-8">
       <LoginForm returnTo={searchParams.returnTo} />
     </div>
   );

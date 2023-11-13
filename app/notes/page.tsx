@@ -28,7 +28,7 @@ export default async function NotesPage() {
   console.log('Checking: ', userNote);
 
   return (
-    <div>
+    <div className="mt-8">
       <CreateNoteForm userId={user.id} />
 
       <br />

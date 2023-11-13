@@ -28,5 +28,5 @@ export default async function AnimalsPage() {
   // const animals = await getAnimals();
 
   // return <AnimalsForm animals={animals} />;
-  return <>Admin Page</>;
+  return <div className="mt-8">Admin Page</div>;
 }

@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { deleteSessionByToken } from '../../../database/sessions';
 
 export async function logout() {
@@ -16,4 +17,5 @@ export async function logout() {
   cookieStore.set('sessionToken', '', {
     maxAge: -1,
   });
+  redirect('/');
 }
