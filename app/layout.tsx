@@ -94,8 +94,7 @@ export default async function RootLayout(props: Props) {
             </div>
           </div>
         </nav>
-
-        {props.children}
+        <div className="max-w-7xl mx-auto">{props.children}</div>
       </body>
     </html>
   );
