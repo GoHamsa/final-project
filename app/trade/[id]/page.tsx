@@ -15,7 +15,7 @@ async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
       'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10',
       {
         headers: {
-          'X-CMC_PRO_API_KEY': '17bf42f7-860f-4465-839d-e807390b31bc',
+          'X-CMC_PRO_API_KEY': process.env.COIN_MARKET_CAP_API_KEY,
         },
       },
     );
@@ -39,7 +39,6 @@ export default async function Trade() {
   }
 
   // Vorbereitung d Coin API
-  // 17bf42f7-860f-4465-839d-e807390b31bc
 
   // create from existing, dort sie cmd line
 
