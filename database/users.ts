@@ -30,12 +30,25 @@ export const createUser = cache(
     return user;
   },
 );
+export const updateUserById = async (
+  id: number,
+  attributes: { firstname: string; lastname: string },
+) => {
+  console.log(id, attributes);
+  return sql<User[]>`
+      UPDATE users
+      SET firstname = ${attributes.firstname}, lastname = ${attributes.lastname}
+      WHERE id = ${id};
+    `;
+};
 
 export const getUserByUsername = cache(async (username: string) => {
   const [user] = await sql<User[]>`
     SELECT
       id,
-      username
+      username,
+      firstname,
+      lastname
     FROM
       users
     WHERE

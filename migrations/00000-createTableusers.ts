@@ -3,6 +3,8 @@ import { Sql } from 'postgres';
 export type User = {
   id: number;
   username: string;
+  firstname: string;
+  lastname: string;
 };
 
 export async function up(sql: Sql) {
@@ -11,6 +13,9 @@ export async function up(sql: Sql) {
       id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
       username varchar(80) NOT NULL UNIQUE,
       password_hash varchar (80) NOT NULL,
+      firstname varchar(80) NULL,
+      lastname varchar(80) NULL
+
 /*       is_Admin BOOLEAN DEFAULT false
  */    );
   `;

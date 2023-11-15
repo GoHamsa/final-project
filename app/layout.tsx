@@ -55,24 +55,16 @@ export default async function RootLayout(props: Props) {
               <Link className="btn btn-ghost normal-case" href="/trade">
                 Trade
               </Link>
-              <Link href="/trade">
-                <Image
-                  src="/images/profile.png"
-                  alt="profile"
-                  width={100}
-                  height={100}
-                />
-              </Link>
               {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
 
-              <div className="flex justify-between w-full">
+              <div className="flex-none justify-between w-full">
                 {user ? (
                   <div className="flex items-center space-x-2">
                     <div>Welcome {user.username}!</div>
-                    <Link href="/trade">
+                    <Link href={{ pathname: `/profile/${user.username}` }}>
                       {/* <img src="/profile.png" alt="profile" /> */}
                       <Image
-                        src="/images/favicon.ico"
+                        src="/images/profile.png"
                         alt="profile"
                         width={50}
                         height={50}
