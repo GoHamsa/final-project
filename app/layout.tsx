@@ -32,7 +32,7 @@ export default async function RootLayout(props: Props) {
 
   const user =
     sessionToken && (await getUserBySessionToken(sessionToken.value));
-
+  console.log(user);
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -46,12 +46,6 @@ export default async function RootLayout(props: Props) {
               cryEx
             </Link>
             <div className="btn-group flex-grow">
-              <Link className="btn btn-ghost normal-case" href="/admin">
-                Admin
-              </Link>
-              <Link className="btn btn-ghost normal-case" href="/notes">
-                Notes
-              </Link>
               <Link className="btn btn-ghost normal-case" href="/NewsBusiness">
                 Business-News
               </Link>
@@ -66,6 +60,17 @@ export default async function RootLayout(props: Props) {
               <div className="flex-none justify-between w-full">
                 {user ? (
                   <div className="flex items-center space-x-2">
+                    <Link className="btn btn-ghost normal-case" href="/notes">
+                      Notes
+                    </Link>
+                    {user.isAdmin ? (
+                      <Link className="btn btn-ghost normal-case" href="/admin">
+                        Admin
+                      </Link>
+                    ) : (
+                      <></>
+                    )}
+
                     <div>Welcome {user.username}!</div>
                     <Link href={{ pathname: `/profile/${user.username}` }}>
                       {/* <img src="/profile.png" alt="profile" /> */}
