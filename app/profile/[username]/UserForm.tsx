@@ -13,6 +13,10 @@ export default function UserForm({ params }: Props) {
   const [firstname, setFirstname] = useState(params.user.firstname);
   const [lastname, setLastname] = useState(params.user.lastname);
   const [email, setEmail] = useState(params.user.email);
+  const [street, setStreet] = useState(params.user.street);
+  const [city, setCity] = useState(params.user.city);
+  const [postalCode, setPostalCode] = useState(params.user.postalCode);
+  const [country, setCountry] = useState(params.user.country);
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
@@ -25,6 +29,10 @@ export default function UserForm({ params }: Props) {
         firstname,
         lastname,
         email,
+        street,
+        city,
+        postalCode,
+        country,
       }),
     });
 
@@ -64,6 +72,34 @@ export default function UserForm({ params }: Props) {
         <input
           onChange={(event) => setEmail(event.currentTarget.value)}
           value={email}
+        />
+      </label>
+      <label>
+        street
+        <input
+          onChange={(event) => setStreet(event.currentTarget.street)}
+          value={street}
+        />
+      </label>
+      <label>
+        city
+        <input
+          onChange={(event) => setCity(event.currentTarget.city)}
+          value={city}
+        />
+      </label>
+      <label>
+        Postal Code
+        <input
+          onChange={(event) => setPostalCode(event.currentTarget.postalCode)}
+          value={postalCode}
+        />
+      </label>
+      <label>
+        country
+        <input
+          onChange={(event) => setCountry(event.currentTarget.country)}
+          value={country}
         />
       </label>
 

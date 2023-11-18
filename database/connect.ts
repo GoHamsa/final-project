@@ -45,3 +45,4 @@ function connectOneTimeToDatabase() {
 
 // Connect to PostgreSQL
 export const sql = connectOneTimeToDatabase();
+1;

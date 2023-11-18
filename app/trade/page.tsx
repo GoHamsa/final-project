@@ -13,7 +13,7 @@ type CoinMarketCapCrypto = {
 async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
   try {
     const response = await axios.get(
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=99',
+      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=19',
       {
         headers: {
           'X-CMC_PRO_API_KEY': process.env.COIN_MARKET_CAP_API_KEY,
@@ -31,13 +31,6 @@ async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
 export default async function Trade() {
   const cryptos = await getCryptos();
   console.log(cryptos);
-
-  // Vorbereitung d Coin API
-
-  // create from existing, dort sie cmd line
-
-  // HOW TO LOAD ASYNC DATA WITH REACT
-  // put API KEY in .env file!
 
   return (
     <div>

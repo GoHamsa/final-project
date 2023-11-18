@@ -11,6 +11,10 @@ const userSchema = z.object({
   firstname: z.string().min(3),
   lastname: z.string().min(3),
   email: z.string().email(),
+  street: z.string().min(1),
+  city: z.string().min(1),
+  postalCode: z.number().min(1),
+  country: z.string().min(1),
 });
 
 export type UserUpdateResponseBodyPost =

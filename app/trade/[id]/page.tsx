@@ -12,7 +12,7 @@ type CoinMarketCapCrypto = {
 async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
   try {
     const response = await axios.get(
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10',
+      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=1',
       {
         headers: {
           'X-CMC_PRO_API_KEY': process.env.COIN_MARKET_CAP_API_KEY,

@@ -6,6 +6,10 @@ export type User = {
   firstname: string;
   lastname: string;
   email: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
   isAdmin: boolean;
 };
 
@@ -18,8 +22,12 @@ export async function up(sql: Sql) {
       firstname varchar(80) NULL,
       lastname varchar(80) NULL,
       email varchar(80) NULL,
+      street varchar(80) NULL,
+      city varchar(80) NULL,
+      postalCode varchar(80) NULL,
+      country varchar(80) NULL,
 
-       is_admin BOOLEAN DEFAULT false
+      is_admin BOOLEAN DEFAULT false
      );
   `;
 }
@@ -29,5 +37,3 @@ export async function down(sql: Sql) {
     DROP TABLE users
   `;
 }
-
-// postgresql://nextjs-ecommerce-store:postgres@localhost:5432/mydatabase
