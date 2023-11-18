@@ -1,20 +1,16 @@
-import crypto from 'node:crypto';
-import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createSession } from '../../../../database/sessions';
 import {
-  createUser,
-  getUserByUsername,
+  getUserBySessionToken,
   updateUserById,
 } from '../../../../database/users';
 import { User } from '../../../../migrations/00000-createTableusers';
-import { secureCookieOptions } from '../../../../util/cookies';
 
 const userSchema = z.object({
   firstname: z.string().min(3),
   lastname: z.string().min(3),
+  email: z.string().email(),
 });
 
 export type UserUpdateResponseBodyPost =
@@ -46,10 +42,15 @@ export async function PATCH(
   }
 
   // 5. Save the user information with the hashed password in the database
-  const user = await updateUserById(1, result.data);
+  const cookieStore = cookies();
+  const sessionToken = cookieStore.get('sessionToken');
+
+  const userSession =
+    sessionToken && (await getUserBySessionToken(sessionToken.value));
+  const user = await updateUserById(userSession?.id!, result.data);
 
   // 6. Return the new user information without the password hash
   return NextResponse.json({
-    user: user as User,
+    user: user as unknown as User,
   });
 }

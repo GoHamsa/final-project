@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { User } from '../../../migrations/00000-createTableusers';
-import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
+import { RegisterResponseBodyPost } from '../../api/(auth)/register/route'; // brauchen wir diese zeile?
 
 type Props = {
   params: { user: User };
@@ -12,6 +12,7 @@ type Props = {
 export default function UserForm({ params }: Props) {
   const [firstname, setFirstname] = useState(params.user.firstname);
   const [lastname, setLastname] = useState(params.user.lastname);
+  const [email, setEmail] = useState(params.user.email);
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
@@ -23,6 +24,7 @@ export default function UserForm({ params }: Props) {
       body: JSON.stringify({
         firstname,
         lastname,
+        email,
       }),
     });
 
@@ -55,6 +57,13 @@ export default function UserForm({ params }: Props) {
         <input
           onChange={(event) => setLastname(event.currentTarget.value)}
           value={lastname}
+        />
+      </label>
+      <label>
+        Email
+        <input
+          onChange={(event) => setEmail(event.currentTarget.value)}
+          value={email}
         />
       </label>
 

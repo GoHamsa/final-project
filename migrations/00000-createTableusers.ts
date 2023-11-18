@@ -5,6 +5,7 @@ export type User = {
   username: string;
   firstname: string;
   lastname: string;
+  email: string;
 };
 
 export async function up(sql: Sql) {
@@ -14,7 +15,8 @@ export async function up(sql: Sql) {
       username varchar(80) NOT NULL UNIQUE,
       password_hash varchar (80) NOT NULL,
       firstname varchar(80) NULL,
-      lastname varchar(80) NULL
+      lastname varchar(80) NULL,
+      email varchar(80) NULL
 
 /*       is_Admin BOOLEAN DEFAULT false
  */    );

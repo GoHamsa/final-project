@@ -14,7 +14,7 @@ type NewsDataNews = {
 async function getNews(): Promise<NewsDataNews[]> {
   try {
     const response = await axios.get(
-      `https://newsdata.io/api/1/news?language=en&category=business&image=1&apikey=${process.env.NEWS_DATA_API_KEY}`,
+      `https://newsdata.io/api/1/news?language=en&category=technology&image=1&apikey=${process.env.NEWS_DATA_API_KEY}`,
     );
 
     return response.data.results;
@@ -29,7 +29,7 @@ export default async function News() {
   console.log(newsList);
   return (
     <div>
-      <p className="text-xl ">News</p>
+      <p className="text-xl ">Tech-News</p>
       <div className="flex flex-wrap">
         {newsList.map((news) => (
           <div

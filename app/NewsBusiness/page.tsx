@@ -29,7 +29,7 @@ export default async function News() {
   console.log(newsList);
   return (
     <div>
-      <p className="text-xl ">News</p>
+      <p className="text-xl ">Business-News</p>
       <div className="flex flex-wrap">
         {newsList.map((news) => (
           <div

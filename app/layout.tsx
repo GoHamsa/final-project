@@ -52,6 +52,12 @@ export default async function RootLayout(props: Props) {
               <Link className="btn btn-ghost normal-case" href="/notes">
                 Notes
               </Link>
+              <Link className="btn btn-ghost normal-case" href="/NewsBusiness">
+                Business-News
+              </Link>
+              <Link className="btn btn-ghost normal-case" href="/NewsTech">
+                Tech-News
+              </Link>
               <Link className="btn btn-ghost normal-case" href="/trade">
                 Trade
               </Link>
