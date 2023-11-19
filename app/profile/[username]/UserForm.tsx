@@ -77,28 +77,28 @@ export default function UserForm({ params }: Props) {
       <label>
         street
         <input
-          onChange={(event) => setStreet(event.currentTarget.street)}
+          onChange={(event) => setStreet(event.currentTarget.value)}
           value={street}
         />
       </label>
       <label>
         city
         <input
-          onChange={(event) => setCity(event.currentTarget.city)}
+          onChange={(event) => setCity(event.currentTarget.value)}
           value={city}
         />
       </label>
       <label>
         Postal Code
         <input
-          onChange={(event) => setPostalCode(event.currentTarget.postalCode)}
+          onChange={(event) => setPostalCode(event.currentTarget.value)}
           value={postalCode}
         />
       </label>
       <label>
         country
         <input
-          onChange={(event) => setCountry(event.currentTarget.country)}
+          onChange={(event) => setCountry(event.currentTarget.value)}
           value={country}
         />
       </label>

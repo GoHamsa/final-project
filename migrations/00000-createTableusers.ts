@@ -24,7 +24,7 @@ export async function up(sql: Sql) {
       email varchar(80) NULL,
       street varchar(80) NULL,
       city varchar(80) NULL,
-      postalCode varchar(80) NULL,
+      postalCode varchar(20) NULL,
       country varchar(80) NULL,
 
       is_admin BOOLEAN DEFAULT false

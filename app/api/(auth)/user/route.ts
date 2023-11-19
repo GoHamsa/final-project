@@ -13,7 +13,7 @@ const userSchema = z.object({
   email: z.string().email(),
   street: z.string().min(1),
   city: z.string().min(1),
-  postalCode: z.number().min(1),
+  postalCode: z.string().min(1),
   country: z.string().min(1),
 });
 
