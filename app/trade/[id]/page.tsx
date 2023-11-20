@@ -39,9 +39,7 @@ export default async function Trade() {
   }
 
   // Vorbereitung d Coin API
-
   // create from existing, dort sie cmd line
-
   // HOW TO LOAD ASYNC DATA WITH REACT
   // put API KEY in .env file!
 

@@ -51,6 +51,14 @@ export const updateUserById = async (
     `;
 };
 
+export const getUsers = async () => {
+  const [user] = await sql<User[]>`
+  SELECT id, username
+  FROM users
+  `;
+  return user;
+};
+
 export const getUserByUsername = cache(async (username: string) => {
   const [user] = await sql<User[]>`
     SELECT

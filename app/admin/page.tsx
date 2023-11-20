@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getValidSessionByToken } from '../../database/sessions';
-import { getUserBySessionToken } from '../../database/users';
+import { getUserBySessionToken, getUsers } from '../../database/users';
 
 export const metadata = {
   title: 'Admin page',
@@ -24,5 +23,34 @@ export default async function AnimalsPage() {
   if (session.isAdmin === false) redirect('/404');
 
   // 4. If the sessionToken cookie is valid, allow access to admin page
-  return <div className="mt-8">Admin Page</div>;
+
+  const users = await getUsers();
+  console.log(users);
+
+  return (
+    <div className="mt-8">
+      Admin Page
+      <div>
+        <p className="text-xl ">Trade</p>
+        <div className="min-w-[50%]">
+          <table className="table table-auto table-lg">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>username</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td>id {user.id}</td>
+                  <td>usernams {user.username}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 }
