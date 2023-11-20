@@ -40,7 +40,7 @@ export const updateUserById = async (
     city: string;
     postalCode: string;
     country: string;
-    isAdmin: boolean;
+    // isAdmin: boolean;
   },
 ) => {
   console.log(id, attributes);

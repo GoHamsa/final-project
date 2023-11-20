@@ -36,11 +36,10 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <CookieBanner /> */}
-        <nav className="max-w-7xl mx-auto navbar bg-base-100">
+        <div className="max-w-7xl mx-auto navbar bg-base-100">
           <div className="justify-between items-center">
             <Link href="/">
-              <img src="/favicon.ico" alt="logo" />
+              <img src="/images/favicon.ico" alt="logo" />
             </Link>
             <Link className="btn btn-ghost normal-case text-xl" href="/">
               cryEx
@@ -55,7 +54,6 @@ export default async function RootLayout(props: Props) {
               <Link className="btn btn-ghost normal-case" href="/trade">
                 Trade
               </Link>
-              {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
 
               <div className="flex-none justify-between w-full">
                 {user ? (
@@ -73,9 +71,9 @@ export default async function RootLayout(props: Props) {
 
                     <div>Welcome {user.username}!</div>
                     <Link href={{ pathname: `/profile/${user.username}` }}>
-                      {/* <img src="/profile.png" alt="profile" /> */}
                       <Image
-                        src="/images/profile.png"
+                        className="btn-circle avatar"
+                        src="https://res.cloudinary.com/dxuusrt3k/image/upload/v1700431344/hamsaProfile.png"
                         alt="profile"
                         width={50}
                         height={50}
@@ -96,7 +94,7 @@ export default async function RootLayout(props: Props) {
               </div>
             </div>
           </div>
-        </nav>
+        </div>
         <div className="max-w-7xl mx-auto">{props.children}</div>
       </body>
     </html>
