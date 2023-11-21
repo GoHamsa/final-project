@@ -52,11 +52,10 @@ export const updateUserById = async (
 };
 
 export const getUsers = async () => {
-  const [user] = await sql<User[]>`
+  return sql<User[]>`
   SELECT id, username
   FROM users
   `;
-  return user;
 };
 
 export const getUserByUsername = cache(async (username: string) => {
@@ -127,3 +126,11 @@ export const getUserNoteBySessionToken = cache(async (token: string) => {
   `;
   return notes;
 });
+
+export const deleteUserById = async (userId: number) => {
+  const result = await sql<User[]>`
+    DELETE FROM users
+    WHERE id = ${userId}
+  `;
+  return result;
+};

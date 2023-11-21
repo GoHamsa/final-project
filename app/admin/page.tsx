@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getUserBySessionToken, getUsers } from '../../database/users';
+import AdminForm from './AdminForm';
 
 export const metadata = {
   title: 'Admin page',
@@ -13,44 +14,15 @@ export default async function AnimalsPage() {
   const sessionTokenCookie = cookies().get('sessionToken');
   // 2. Check if the sessionToken cookie is still valid
   const session =
-    sessionTokenCookie &&
-    (await getUserBySessionToken(sessionTokenCookie.value));
+    sessionTokenCookie && getUserBySessionToken(sessionTokenCookie.value);
 
   //  Query your database to check if this user is admin
 
   // 3. If the sessionToken cookie is invalid or doesn't exist, redirect to login with returnTo
   if (!session) redirect('/login?returnTo=/(auth)/admin');
   if (session.isAdmin === false) redirect('/404');
+  const users = await getUsers();
 
   // 4. If the sessionToken cookie is valid, allow access to admin page
-
-  const users = await getUsers();
-  console.log(users);
-
-  return (
-    <div className="mt-8">
-      Admin Page
-      <div>
-        <p className="text-xl ">Trade</p>
-        <div className="min-w-[50%]">
-          <table className="table table-auto table-lg">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>username</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>id {user.id}</td>
-                  <td>usernams {user.username}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
+  return <AdminForm users={users} />;
 }

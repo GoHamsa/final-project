@@ -1,9 +1,11 @@
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import getCryptoImage from '../../util/getCryptoImage';
+import CryptoList from './CryptoList';
 
-type CoinMarketCapCrypto = {
+export type CoinMarketCapCrypto = {
   id: number;
   name: string;
   image: string;
@@ -13,7 +15,7 @@ type CoinMarketCapCrypto = {
 async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
   try {
     const response = await axios.get(
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=19',
+      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=5',
       {
         headers: {
           'X-CMC_PRO_API_KEY': process.env.COIN_MARKET_CAP_API_KEY,
@@ -36,39 +38,7 @@ export default async function Trade() {
     <div>
       <p className="text-xl ">Trade</p>
       <div className="min-w-[50%]">
-        <table className="table table-auto table-lg">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>icon</th>
-              <th>asset</th>
-              <th>price in USD</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cryptos.map((crypto) => (
-              <tr key={crypto.id}>
-                <td>
-                  <Image
-                    src={getCryptoImage(crypto.id, '64x64')}
-                    alt={crypto.name}
-                    width={50}
-                    height={50}
-                  />
-                </td>
-                <td>
-                  <Link
-                    className="link link-hover"
-                    href={`/trade/${crypto.id}`}
-                  >
-                    {crypto.name}
-                  </Link>
-                </td>
-                <td>{crypto.quote.USD.price.toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <CryptoList cryptos={cryptos}></CryptoList>
       </div>
     </div>
   );

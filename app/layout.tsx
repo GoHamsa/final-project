@@ -32,7 +32,7 @@ export default async function RootLayout(props: Props) {
 
   const user =
     sessionToken && (await getUserBySessionToken(sessionToken.value));
-  console.log(user);
+  // console.log(user);
   return (
     <html lang="en">
       <body className={inter.className}>

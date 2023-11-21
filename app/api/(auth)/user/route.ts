@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
+  deleteUserById,
   getUserBySessionToken,
   updateUserById,
 } from '../../../../database/users';
