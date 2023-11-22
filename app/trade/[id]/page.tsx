@@ -1,6 +1,12 @@
 import axios from 'axios';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import {
+  getUserBySessionToken,
+  getUserNoteBySessionToken,
+} from '../../../database/users';
 
 type CoinMarketCapCrypto = {
   id: number;
@@ -28,6 +34,18 @@ async function getCryptos(): Promise<CoinMarketCapCrypto[]> {
 }
 
 export default async function Trade() {
+  const sessionTokenCookie = cookies().get('sessionToken');
+
+  const user =
+    sessionTokenCookie &&
+    (await getUserBySessionToken(sessionTokenCookie.value));
+
+  if (!user) redirect('/login?returnTo=/notes');
+
+  // Display the notes for the current logged in user
+  const userNote = await getUserNoteBySessionToken(sessionTokenCookie.value);
+  console.log(userNote);
+  console.log('Checking: ', userNote);
   const cryptos = await getCryptos();
   console.log(cryptos);
 
@@ -76,6 +94,28 @@ export default async function Trade() {
           </tbody>
         </table>
       </div>
+
+      <div>
+        {userNote.length > 0 ? (
+          <>
+            <h2>Notes For {user.username}</h2>
+            <ul>
+              {userNote.map((note) => (
+                <li key={`animal-div-${note.noteId}`}>{note.textContent}</li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <h2> No notes yet</h2>
+        )}
+      </div>
+      <label>
+        Add Note:
+        <input
+        /* value={textContent}
+          onChange={(event) => setTextContent(event.currentTarget.value)} */
+        />
+      </label>
     </div>
   );
 }

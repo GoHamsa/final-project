@@ -54,6 +54,9 @@ export default async function RootLayout(props: Props) {
               <Link className="btn btn-ghost normal-case" href="/trade">
                 Trade
               </Link>
+              <Link className="btn btn-ghost normal-case" href="/test">
+                Test
+              </Link>
 
               <div className="flex-none justify-between w-full">
                 {user ? (

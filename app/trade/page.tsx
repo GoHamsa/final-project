@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { useState } from 'react';
+import {
+  getUserBySessionToken,
+  getUserNoteBySessionToken,
+} from '../../database/users';
 import getCryptoImage from '../../util/getCryptoImage';
 import CryptoList from './CryptoList';
 
