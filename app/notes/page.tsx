@@ -28,25 +28,28 @@ export default async function NotesPage() {
   console.log('Checking: ', userNote);
 
   return (
-    <div className="mt-8">
-      <CreateNoteForm userId={user.id} />
+    <div className="container mx-auto p-4">
+      <div className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mt-8">
+          <CreateNoteForm userId={user.id} />
 
-      <br />
-      <br />
-      <br />
-      <div>
-        {userNote.length > 0 ? (
-          <>
-            <h2>Notes For {user.username}</h2>
-            <ul>
-              {userNote.map((note) => (
-                <li key={`animal-div-${note.noteId}`}>{note.textContent}</li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <h2> No notes yet</h2>
-        )}
+          <div className="flex flex-col gap-6 items-center">
+            {userNote.length > 0 ? (
+              <>
+                <h2 className="block text-sm font-bold mb-2">Your Balance</h2>
+                <ul className="flex flex-col gap-6 items-center">
+                  {userNote.map((note) => (
+                    <li key={`animal-div-${note.noteId}`}>
+                      {note.textContent} $
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <h2> No notes yet</h2>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

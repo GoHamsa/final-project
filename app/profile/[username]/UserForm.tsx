@@ -51,65 +51,81 @@ export default function UserForm({ params }: Props) {
   }
 
   return (
-    <form onSubmit={async (event) => await handleSubmit(event)}>
-      <label>
-        First Name
-        <input
-          onChange={(event) => setFirstname(event.currentTarget.value)}
-          value={firstname}
-        />
-      </label>
+    <div className="container mx-auto p-4">
+      <div className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form
+          className="flex flex-col gap-6 items-center"
+          onSubmit={async (event) => await handleSubmit(event)}
+        >
+          <div className="w-full max-w-xs">
+            <label className="block text-sm font-bold mb-2">
+              First Name
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setFirstname(event.currentTarget.value)}
+                value={firstname}
+              />
+            </label>
 
-      <label>
-        Last Name
-        <input
-          onChange={(event) => setLastname(event.currentTarget.value)}
-          value={lastname}
-        />
-      </label>
-      <label>
-        Email
-        <input
-          onChange={(event) => setEmail(event.currentTarget.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        street
-        <input
-          onChange={(event) => setStreet(event.currentTarget.value)}
-          value={street}
-        />
-      </label>
-      <label>
-        city
-        <input
-          onChange={(event) => setCity(event.currentTarget.value)}
-          value={city}
-        />
-      </label>
-      <label>
-        Postal Code
-        <input
-          onChange={(event) => setPostalCode(event.currentTarget.value)}
-          value={postalCode}
-        />
-      </label>
-      <label>
-        country
-        <input
-          onChange={(event) => setCountry(event.currentTarget.value)}
-          value={country}
-        />
-      </label>
+            <label className="block text-sm font-bold mb-2">
+              Last Name
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setLastname(event.currentTarget.value)}
+                value={lastname}
+              />
+            </label>
+            <label className="block text-sm font-bold mb-2">
+              Email
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setEmail(event.currentTarget.value)}
+                value={email}
+              />
+            </label>
+            <label className="block text-sm font-bold mb-2">
+              street
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setStreet(event.currentTarget.value)}
+                value={street}
+              />
+            </label>
+            <label className="block text-sm font-bold mb-2">
+              city
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setCity(event.currentTarget.value)}
+                value={city}
+              />
+            </label>
+            <label className="block text-sm font-bold mb-2">
+              Postal Code
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setPostalCode(event.currentTarget.value)}
+                value={postalCode}
+              />
+            </label>
+            <label className="block text-sm font-bold mb-2">
+              country
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
+                onChange={(event) => setCountry(event.currentTarget.value)}
+                value={country}
+              />
+            </label>
+          </div>
 
-      <button>Update</button>
+          <button className="btn btn-neutral">Update</button>
 
-      {errors.map((error) => (
-        <div className="error" key={`error-${error.message}`}>
-          Error: {error.message}
-        </div>
-      ))}
-    </form>
+          {errors.map((error) => (
+            <div className="error" key={`error-${error.message}`}>
+              Error: {error.message}
+            </div>
+          ))}
+        </form>
+      </div>
+    </div>
   );
 }

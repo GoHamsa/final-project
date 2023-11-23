@@ -3,20 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-light: #ffffff;
+  --background-dark: #000000;
+  --text-light: #000000;
+  --text-dark: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* and so on for h3, h4... */
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,9 +37,22 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 .error {
   color: red;
   background: grey;
+}
+
+/* Define your color themes */
+
+/* Use a class to toggle the theme */
+.light-theme {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.dark-theme {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }

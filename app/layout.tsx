@@ -82,7 +82,7 @@ export default async function RootLayout(props: Props) {
                         height={50}
                       />
                     </Link>
-                    <LogoutButton className="btn" />
+                    <LogoutButton className="btn btn-neutral" />
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2">
