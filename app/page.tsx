@@ -79,12 +79,6 @@ export default function Home() {
           className="max-w-full h-auto"
         />
       </div>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
 
       <footer className="footer p-10  text-base-content">
         <nav>

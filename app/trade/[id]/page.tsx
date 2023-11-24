@@ -116,6 +116,7 @@ export default async function Trade() {
         onChange={(event) => setTextContent(event.currentTarget.value)} */
           />
         </label>
+        <button className="btn btn-neutral">Buy</button>
       </div>
     </div>
   );

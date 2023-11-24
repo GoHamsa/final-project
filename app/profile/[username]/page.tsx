@@ -23,7 +23,9 @@ export default async function UserProfilePage({ params }: Props) {
   const user = (await getUserByUsername(userSession.username)) as User;
   return (
     <div>
-      <h2>{params.username} Profile</h2>
+      <h1 className="text-center text-3xl font-bold">
+        {params.username} Profile
+      </h1>
       <UserForm
         params={{
           user: user,

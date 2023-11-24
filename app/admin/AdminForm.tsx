@@ -26,29 +26,36 @@ export default function UserList({ users }: UserListProps) {
   if (users.length === 0) return <div>Loading...</div>;
 
   return (
-    <div className="mt-8">
-      <p className="text-xl">Admin Page</p>
-      <div className="min-w-[50%]">
-        <table className="table table-auto table-lg">
-          <thead>
-            <tr>
-              <th>User-id</th>
-              <th>Username</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-                <td>
-                  <button onClick={() => handleDelete(user.id)}>Delete</button>
-                </td>
+    <div className="container mx-auto p-4">
+      <div className="flex flex-col gap-6 ">
+        <h1 className="text-center text-3xl font-bold my-8">Users Table</h1>
+        <div className="flex justify-center">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th className="text-left">User-id</th>
+                <th className="text-center">Username</th>
+                <th className="text-right">Delete</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr className="hover" key={user.id}>
+                  <td className="text-left">{user.id}</td>
+                  <td className="text-center">{user.username}</td>
+                  <td className="text-right">
+                    <button
+                      className="btn btn-outline btn-error"
+                      onClick={() => handleDelete(user.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
