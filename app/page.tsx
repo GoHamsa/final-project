@@ -27,25 +27,12 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center dark:bg-white dark:text-black bg-black text-white text-center p-20">
-        <div className="flex-1">
-          <Image
-            src="/images/04.webp"
-            alt="Web3"
-            width={200}
-            height={200}
-            className="max-w-md mx-auto"
-          />
-        </div>
-        <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Explore web3 profiles, and claim one for free
-          </h2>
-          <p>
-            Create and customize your web3 profile, check out other profiles,
-            and explore popular NFT collections and tokens.
-          </p>
-        </div>
+      <div className="w-full flex justify-center">
+        <img
+          src="/images/03.png"
+          alt="Descriptive Alt Text"
+          className="max-w-full h-auto"
+        />
       </div>
       <div className="flex items-center justify-between p-20 ">
         <div className="text-left max-w-xl">
@@ -72,12 +59,25 @@ export default function Home() {
           trading
         </p>
       </div>
-      <div className="w-full flex justify-center">
-        <img
-          src="/images/03.png"
-          alt="Descriptive Alt Text"
-          className="max-w-full h-auto"
-        />
+      <div className="flex items-center justify-center dark:bg-white dark:text-black bg-black text-white text-center p-20">
+        <div className="flex-1">
+          <Image
+            src="/images/04.webp"
+            alt="Web3"
+            width={200}
+            height={200}
+            className="max-w-md mx-auto"
+          />
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold mb-4">
+            Explore web3 profiles, and claim one for free
+          </h2>
+          <p>
+            Create and customize your web3 profile, check out other profiles,
+            and explore popular NFT collections and tokens.
+          </p>
+        </div>
       </div>
 
       <footer className="footer p-10  text-base-content">
