@@ -1,5 +1,6 @@
 'use client';
 
+import { CldUploadWidget } from 'next-cloudinary';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { User } from '../../../migrations/00000-createTableusers';
@@ -116,7 +117,17 @@ export default function UserForm({ params }: Props) {
               />
             </label>
           </div>
-
+          <CldUploadWidget
+            uploadPreset={process.env.NEXT_CLOUDINARY_UPLOAD_PRESET}
+          >
+            {({ open }) => {
+              return (
+                <button className="btn btn-outline" onClick={() => open()}>
+                  Upload an Image
+                </button>
+              );
+            }}
+          </CldUploadWidget>
           <button className="btn btn-neutral">Update</button>
 
           {errors.map((error) => (

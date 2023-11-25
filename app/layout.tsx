@@ -75,7 +75,7 @@ export default async function RootLayout(props: Props) {
                   <Link href={{ pathname: `/profile/${user.username}` }}>
                     <Image
                       className="btn-circle avatar"
-                      src="https://res.cloudinary.com/dxuusrt3k/image/upload/v1700431344/hamsaProfile.png"
+                      src="/images/guest.jpeg"
                       alt="profile"
                       width={50}
                       height={50}

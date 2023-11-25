@@ -46,7 +46,7 @@ export default async function NotesPage() {
                 </ul>
               </>
             ) : (
-              <h2> No notes yet</h2>
+              <h2></h2>
             )}
           </div>
         </div>

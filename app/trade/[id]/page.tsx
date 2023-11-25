@@ -101,22 +101,21 @@ export default async function Trade() {
             <h2 className="block text-sm font-bold mb-2">Your Balance</h2>
             <ul className="flex flex-col gap-6 items-center">
               {userNote.map((note) => (
-                <li key={`animal-div-${note.noteId}`}>{note.textContent} $</li>
+                <li key={`animal-div-${note.noteId}`}>{note.textContent}</li>
               ))}
             </ul>
           </>
         ) : (
-          <h2> No notes yet</h2>
+          <h2></h2>
         )}
-        <label className="block text-sm font-bold mb-2">
-          Buy BTC for:
+        {/* <label className="block text-sm font-bold mb-2">
+
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
-            /* value={textContent}
-        onChange={(event) => setTextContent(event.currentTarget.value)} */
           />
-        </label>
-        <button className="btn btn-neutral">Buy</button>
+        </label> */}
+        {/* <p>0.001324511 Bitcoin</p> */}
+        {/* <button className="btn btn-neutral">Confirm</button> */}
       </div>
     </div>
   );

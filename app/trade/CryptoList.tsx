@@ -39,7 +39,6 @@ export default function CryptoList({ cryptos }: CryptoListProps) {
             <th>icon</th>
             <th>asset</th>
             <th>price in USD</th>
-            <th>buy</th>
           </tr>
         </thead>
         <tbody>
@@ -54,12 +53,15 @@ export default function CryptoList({ cryptos }: CryptoListProps) {
                 />
               </td>
               <td>
-                <Link className="link link-hover" href={`/trade/${crypto.id}`}>
+                <Link
+                  className="link link-hover"
+                  href={`/trade/${crypto.name}`}
+                >
                   {crypto.name}
                 </Link>
               </td>
-              <td>{crypto.quote.USD.price.toFixed(5)}</td>
-              <td>
+              <td>{crypto.quote.USD.price.toFixed(2)}</td>
+              {/* <td>
                 <button onClick={() => decreaseQuantityById(crypto.id)}>
                   -
                 </button>
@@ -67,7 +69,7 @@ export default function CryptoList({ cryptos }: CryptoListProps) {
                 <button onClick={() => increaseQuantityById(crypto.id)}>
                   +
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
