@@ -3,15 +3,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createNote } from '../../../database/notes';
 import { getValidSessionByToken } from '../../../database/sessions';
+import {
+  getUserBySessionToken,
+  updateBalanceByUserId,
+} from '../../../database/users';
 
 const noteSchema = z.object({
-  userId: z.number(),
-  textContent: z.string().min(3),
+  value: z.number().positive(),
 });
 
 export type CreateNoteResponseBodyPost =
   | {
-      note: { textContent: string };
+      success: true;
     }
   | {
       errors: { message: string }[];
@@ -41,7 +44,7 @@ export async function POST(
   // 2. check if the token has a valid session
   const session =
     sessionTokenCookie &&
-    (await getValidSessionByToken(sessionTokenCookie.value));
+    (await getUserBySessionToken(sessionTokenCookie.value));
 
   if (!session) {
     return NextResponse.json(
@@ -51,23 +54,9 @@ export async function POST(
       { status: 401 },
     );
   }
-
-  // 3. Create the note
-  const newNote = await createNote(result.data.userId, result.data.textContent);
-
-  // 4. If the note creation fails, return an error
-
-  if (!newNote) {
-    return NextResponse.json(
-      {
-        errors: [{ message: 'Note creation failed' }],
-      },
-      { status: 500 },
-    );
-  }
-
+  await updateBalanceByUserId(session.id, result.data.value);
   // 6. Return the text content of the note
   return NextResponse.json({
-    note: { textContent: newNote.textContent },
+    success: true,
   });
 }

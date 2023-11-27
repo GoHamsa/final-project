@@ -50,6 +50,13 @@ export const updateUserById = async (
       WHERE id = ${id};
     `;
 };
+export const updateBalanceByUserId = async (id: number, balance: number) => {
+  return sql<User[]>`
+      UPDATE users
+      SET balance = balance + ${balance}
+      WHERE id = ${id};
+    `;
+};
 
 export const getUsers = async () => {
   return sql<User[]>`
@@ -97,6 +104,7 @@ export const getUserBySessionToken = cache(async (token: string) => {
     SELECT
       users.id,
       users.username,
+      users.balance,
       users.is_admin
     FROM
       users

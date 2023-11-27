@@ -11,6 +11,7 @@ export type User = {
   postalCode: string;
   country: string;
   isAdmin: boolean;
+  balance: number;
 };
 
 export async function up(sql: Sql) {
@@ -26,6 +27,7 @@ export async function up(sql: Sql) {
       city varchar(80) NULL,
       postalCode varchar(20) NULL,
       country varchar(80) NULL,
+      balance float DEFAULT 0,
 
       is_admin BOOLEAN DEFAULT false
      );

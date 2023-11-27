@@ -23,9 +23,6 @@ export default async function NotesPage() {
   if (!user) redirect('/login?returnTo=/notes');
 
   // Display the notes for the current logged in user
-  const userNote = await getUserNoteBySessionToken(sessionTokenCookie.value);
-
-  console.log('Checking: ', userNote);
 
   return (
     <div className="container mx-auto p-4">
@@ -34,20 +31,9 @@ export default async function NotesPage() {
           <CreateNoteForm userId={user.id} />
 
           <div className="flex flex-col gap-6 items-center">
-            {userNote.length > 0 ? (
-              <>
-                <h2 className="block text-sm font-bold mb-2">Your Balance</h2>
-                <ul className="flex flex-col gap-6 items-center">
-                  {userNote.map((note) => (
-                    <li key={`animal-div-${note.noteId}`}>
-                      {note.textContent} $
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <h2></h2>
-            )}
+            <h2 className="block text-sm font-bold mb-2">
+              Your Balance {user.balance} $
+            </h2>
           </div>
         </div>
       </div>

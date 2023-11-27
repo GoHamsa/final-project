@@ -7,6 +7,7 @@ import {
   getUserBySessionToken,
   getUserNoteBySessionToken,
 } from '../../../database/users';
+import BuyForm from './BuyForm';
 
 type CoinMarketCapCrypto = {
   id: number;
@@ -43,9 +44,6 @@ export default async function Trade() {
   if (!user) redirect('/login?returnTo=/notes');
 
   // Display the notes for the current logged in user
-  const userNote = await getUserNoteBySessionToken(sessionTokenCookie.value);
-  console.log(userNote);
-  console.log('Checking: ', userNote);
   const cryptos = await getCryptos();
   console.log(cryptos);
 
@@ -96,27 +94,13 @@ export default async function Trade() {
       </div>
 
       <div className="flex flex-col gap-6 items-center">
-        {userNote.length > 0 ? (
-          <>
-            <h2 className="block text-sm font-bold mb-2">Your Balance</h2>
-            <ul className="flex flex-col gap-6 items-center">
-              {userNote.map((note) => (
-                <li key={`animal-div-${note.noteId}`}>{note.textContent}</li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <h2></h2>
-        )}
-        {/* <label className="block text-sm font-bold mb-2">
-
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
-          />
-        </label> */}
-        {/* <p>0.001324511 Bitcoin</p> */}
-        {/* <button className="btn btn-neutral">Confirm</button> */}
+        Your Balance {user.balance} $
       </div>
+      <BuyForm
+        cryptoName={cryptos[0]?.name!}
+        cryptoPrice={cryptos[0]?.quote.USD.price!}
+        balance={user.balance}
+      />
     </div>
   );
 }

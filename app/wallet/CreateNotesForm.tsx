@@ -1,22 +1,22 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { number } from 'zod';
 
 export default function CreateNoteForm({ userId }: { userId: number }) {
-  const [textContent, setTextContent] = useState('');
+  const [textContent, setTextContent] = useState(0);
 
   const router = useRouter();
 
   async function handleCreateNote() {
-    await fetch('/api/notes', {
+    await fetch('/api/deposit', {
       method: 'POST',
       body: JSON.stringify({
-        textContent,
-        userId,
+        value: textContent,
       }),
     });
     router.refresh();
-    setTextContent('');
+    setTextContent(0);
   }
 
   return (
@@ -34,7 +34,10 @@ export default function CreateNoteForm({ userId }: { userId: number }) {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  border-gray-700"
               value={textContent}
-              onChange={(event) => setTextContent(event.currentTarget.value)}
+              type="number"
+              onChange={(event) =>
+                setTextContent(parseFloat(event.currentTarget.value))
+              }
             />
           </label>
           <br />
